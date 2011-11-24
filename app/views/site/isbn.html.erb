@@ -1,0 +1,6 @@
+<h1>ISBN Validator</h1>
+
+<%= form_tag isbn_validator_path, :method => :post do %>
+  <p><%= text_field_tag :isbn, @isbn %></p>
+  <p><%= submit_tag "Validate" %></p>
+<% end %>
