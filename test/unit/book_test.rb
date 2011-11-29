@@ -26,4 +26,11 @@ class BookTest < ActiveSupport::TestCase
     assert !@new_book.save
   end
   
+  test "should not save book without authors" do
+    @new_book.authors = ''
+    assert @new_book.invalid?
+    assert @new_book.errors[:authors].any?
+    assert !@new_book.save
+  end
+  
 end
