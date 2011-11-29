@@ -33,4 +33,11 @@ class BookTest < ActiveSupport::TestCase
     assert !@new_book.save
   end
   
+  test "should not save book with invalid ISBN" do
+    @new_book.isbn = '123456789a'
+    assert @new_book.invalid?
+    assert_match /is not a valid ISBN/, @new_book.errors[:isbn].join
+    assert !@new_book.save
+  end
+  
 end

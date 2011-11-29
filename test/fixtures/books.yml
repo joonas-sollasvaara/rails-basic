@@ -4,8 +4,10 @@ one:
   title: Agile Web Development with Rails
   authors: Sam Ruby
   description: Rails just keeps on changing. Rails 3 and Ruby 1.9 bring hundreds of improvements, including new APIs and substantial performance enhancements. The fourth edition of this award-winning classic has been reorganized and refocused so it’s more useful than ever before for developers new to Ruby and Rails.
+  isbn: 9781934356548
 
 two:
   title: MyString
   authors: MyString
   description: MyText
+  isbn: 9781934356548
