@@ -1,14 +1,27 @@
-class IsbnValidator
+class IsbnValidator < ActiveModel::Validator
   
-  def validate(isbn)
+  def initialize(options = {})
+    super(options)
+  end
+  
+  def validate(record)
+    if record.is_a?(String)
+      return validate_isbn(record)
+    elsif !validate_isbn(record.isbn) 
+      record.errors[:isbn] << 'is not a valid ISBN!'
+    end
+  end
+  
+  private
+  
+  def validate_isbn(isbn)
+    return false unless isbn.is_a?(String)
     isbn = isbn.gsub(/-| /, "")
-    return false if isbn =~ /[^0-9x]/i
+    return false if isbn =~ /[^0-9X]/
     return validate_isbn10(isbn) if isbn.size == 10
     return validate_isbn13(isbn) if isbn.size == 13
     return false
   end
-  
-  private
   
   def validate_isbn10(isbn)
     sum = 0
