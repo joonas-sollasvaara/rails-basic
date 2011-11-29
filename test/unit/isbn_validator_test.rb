@@ -7,11 +7,13 @@ class IsbnValidatorTest < ActiveSupport::TestCase
     '9519854894'        => 'ISBN 10 without dashes',
     '978-1-934356-54-8' => 'ISBN 13 with dashes',
     '978 1 934356 54 8' => 'ISBN 13 with spaces',
-    '9781934356548'     => 'ISBN 13 without dashes'
+    '9781934356548'     => 'ISBN 13 without dashes',
+    '354018712X'        => 'ISBN 10 with X symbol'
   }
   INVALID_ISBNS = {
     '123456789a'        => 'ISBN 10',
-    '123456789a123'     => 'ISBN 13'
+    '123456789a123'     => 'ISBN 13',
+    '354018712x'        => 'ISBN 10 with x symbol'
   }
   VALID_ISBNS.each do |value, title|
     test "valid #{title}" do

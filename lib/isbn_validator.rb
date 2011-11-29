@@ -13,7 +13,7 @@ class IsbnValidator
   def validate_isbn10(isbn)
     sum = 0
     9.times { |i| sum += (10-i) * isbn[i].to_i }
-    checksum = isbn[9] == 'x' ? 10 : isbn[9].to_i
+    checksum = isbn[9] == 'X' ? 10 : isbn[9].to_i
     checksum == 11 - sum % 11
   end
   
