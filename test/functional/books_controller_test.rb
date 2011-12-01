@@ -65,5 +65,15 @@ class BooksControllerTest < ActionController::TestCase
     assert !assigns(:book).valid?
     assert assigns(:book).changed?
   end
-  
+
+  test "delete book" do
+    book = books(:one)
+    assert_difference("Book.count", -1) do
+      delete :destroy, id: book.id
+      assert_response :redirect
+      assert_redirected_to books_path
+      assert flash[:notice]
+    end
+  end
+
 end
