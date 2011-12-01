@@ -8,4 +8,12 @@ class BooksControllerTest < ActionController::TestCase
     assert assigns(:books)
   end
   
+  test "show book" do
+    book = books(:one)
+    get :show, id: book.id
+    assert_response :success
+    assert assigns(:book)
+    assert_equal book, assigns(:book)
+  end
+  
 end
