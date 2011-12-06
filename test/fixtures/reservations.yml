@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+free:
   book_id: 1
-  state: MyString
-  email: MyString
+  state: free
+  email: library@eficode.fi
 
-two:
+reserved:
   book_id: 1
-  state: MyString
-  email: MyString
+  state: reserved
+  email: library@eficode.fi
