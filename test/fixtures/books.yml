@@ -11,3 +11,15 @@ two:
   authors: MyString
   description: MyText
   isbn: 9781934356548
+
+ruby:
+  title: Programming Ruby 1.9
+  authors: Dave Thomas
+  description: Ruby is the fastest growing and most exciting dynamic language out there. If you need to get working programs delivered fast, you should add Ruby to your toolbox.
+  isbn: 978-1-93435-608-1
+  
+steppenwolf:
+  title: Steppenwolf
+  authors: Hermann Hesse
+  description: A brilliant novel
+  isbn: 0-312-27867-5
