@@ -1,6 +1,12 @@
 Library::Application.routes.draw do
   
-  resources :books
+  resources :books do
+    resources :reservations, :only => [:create, :new] do
+      member do
+        put :free
+      end
+    end
+  end
   
   match 'site/isbn' => 'site#isbn', :via => [:get, :post], :as => :isbn_validator
 
