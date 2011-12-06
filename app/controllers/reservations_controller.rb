@@ -16,4 +16,15 @@ class ReservationsController < ApplicationController
     end
   end
   
+  def free
+    @book = Book.find(params[:book_id])
+    @reservation = @book.reservations.find(params[:id])
+    if @reservation.free
+      flash[:notice] = "Book is no longer reserved"
+    else
+      flash[:error]  = "Something went wrong"
+    end
+    redirect_to book_path(@book)
+  end
+  
 end

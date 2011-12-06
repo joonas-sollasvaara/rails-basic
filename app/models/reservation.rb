@@ -15,6 +15,10 @@ class Reservation < ActiveRecord::Base
                           :message => 'book has been already reserved' 
                       }, 
                       :if => "state == 'reserved'"
+                      
+  def free
+    self.update_attributes({state: 'free'})
+  end
   
   private
 

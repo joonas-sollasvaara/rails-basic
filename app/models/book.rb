@@ -7,4 +7,8 @@ class Book < ActiveRecord::Base
 
   validates_with IsbnValidator
   
+  def reserved
+    self.reservations.where(state: 'reserved').first
+  end
+  
 end
