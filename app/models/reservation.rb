@@ -1,5 +1,7 @@
 class Reservation < ActiveRecord::Base
   
+  belongs_to :book
+  
   before_validation :make_reserved, :on => :create
   
   STATES = %w( free reserved )
