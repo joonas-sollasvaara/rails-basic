@@ -40,4 +40,12 @@ class ReservationTest < ActiveSupport::TestCase
     assert @new_reservation.errors[:email].any?
   end
   
+  test "should not allow reservation if the book already reserved" do
+    reservation = reservations(:reserved)
+    copy = Reservation.new(reservation.attributes)
+    assert !copy.save
+    assert_match /book has been already reserved/, copy.errors[:book_id].join
+  end
+
+  
 end
