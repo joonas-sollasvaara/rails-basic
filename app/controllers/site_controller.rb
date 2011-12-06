@@ -1,8 +1,5 @@
 class SiteController < ApplicationController
   
-  def index
-  end
-
   def isbn
     if request.post?
       @isbn = params[:isbn]
