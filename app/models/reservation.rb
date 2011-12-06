@@ -1,5 +1,7 @@
 class Reservation < ActiveRecord::Base
   
+  before_validation :make_reserved, :on => :create
+  
   STATES = %w( free reserved )
   
   validates :book_id, :presence  => true
@@ -12,5 +14,10 @@ class Reservation < ActiveRecord::Base
                       }, 
                       :if => "state == 'reserved'"
   
+  private
+
+  def make_reserved
+    self.state = 'reserved'
+  end
   
 end

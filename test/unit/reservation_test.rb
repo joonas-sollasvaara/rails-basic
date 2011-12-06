@@ -23,6 +23,7 @@ class ReservationTest < ActiveSupport::TestCase
   end
   
   test "should not save reservation with invalid state" do
+    @new_reservation.save
     @new_reservation.state = 'invalid'
     assert !@new_reservation.save
     assert @new_reservation.errors[:state].any?
@@ -45,6 +46,11 @@ class ReservationTest < ActiveSupport::TestCase
     copy = Reservation.new(reservation.attributes)
     assert !copy.save
     assert_match /book has been already reserved/, copy.errors[:book_id].join
+  end
+  
+  test "should be initially reserved" do
+    assert @new_reservation.save
+    assert_equal 'reserved', @new_reservation.state
   end
 
   
