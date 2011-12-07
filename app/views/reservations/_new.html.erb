@@ -1,0 +1,30 @@
+<h3>Reserve</h3>
+
+<%= form_for [@book, @reservation] do |f| %>
+
+  <% unless @reservation.errors.empty? %>
+    <div class="alert-message block-message error">
+      <h2>Failed create reservation book</h2>
+      <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="clearfix">
+      <label>Email:</label>
+      <div class="input">
+        <%= f.text_field :email, class: 'xlarge' %>
+      </div>
+    </div>
+    <div class="input">
+      <%= f.submit "Save", class: 'btn primary' %>
+      or
+      <%= link_to "Cancel", book_path(@book) %>
+    </div>
+  </fieldset>
+  
+<% end %>
