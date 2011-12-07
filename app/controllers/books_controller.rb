@@ -4,6 +4,8 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.atom { @books = Book.order('created_at DESC') }
       format.html { @books = Book.all }
+      format.xml  { render xml: Book.all }
+      format.json { render json: Book.all }
     end
   end
   
