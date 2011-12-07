@@ -1,34 +1,51 @@
 <%= form_for @book do |f| %>
 
   <% unless @book.errors.empty? %>
-    <h2>Failed to save book</h2>
-    <% @book.errors.full_messages.each do |msg| %>
-      <p><%= msg %></p>
-    <% end %>
+    <div class="alert-message block-message error">
+      <h2>Failed to save book</h2>
+      <ul>
+        <% @book.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
   
-  <div>
-    Title:<br/>
-    <%= f.text_field :title %>
-  </div>
-  
-  <div>
-    Authors:<br/>
-    <%= f.text_field :authors %>
-  </div>
-  
-  <div>
-    ISBN:<br/>
-    <%= f.text_field :isbn %>
-  </div>
-  
-  <div>
-    Description:<br/>
-    <%= f.text_area :description %>
-  </div>
-  
-  <%= f.submit "Save" %>
-  or
-  <%= link_to "Cancel", books_path %>
+  <fieldset>
+    <div class="clearfix">
+      <label>Title:</label>
+      <div class="input">
+        <%= f.text_field :title, class: 'xlarge' %>
+      </div>
+    </div>
+    
+    <div class="clearfix">
+      <label>Authors:</label>
+      <div class="input">
+        <%= f.text_field :authors, class: 'xlarge' %>
+      </div>
+    </div>
+    
+    <div class="clearfix">
+      <label>ISBN:</label>
+      <div class="input">
+        <%= f.text_field :isbn, class: 'xlarge' %>
+      </div>
+    </div>
+    
+    <div class="clearfix">
+      <label>Description:</label>
+      <div class="input">
+        <%= f.text_area :description, class: 'xxlarge' %>
+      </div>
+    </div>
+    
+    <div class="actions">    
+      <%= f.submit "Save", class: 'btn primary' %>
+      or
+      <%= link_to "Cancel", books_path %>
+    </div>
+    
+  </fieldset>
   
 <% end %>

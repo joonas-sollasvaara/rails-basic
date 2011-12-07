@@ -7,13 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<% flash.each do |name,msg| %>
-  <div class="flash_<%=name%>">
-    <%= msg %>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <%= link_to "Library", root_path, class: 'brand' %>
+      </div>
+    </div>
   </div>
-<% end %>
-<%= yield %>
-
+  <div class="container main">
+    <% flash.each do |name,msg| %>
+      <div class="alert-message <%= bootstrap_alert_class(name) %>">
+        <%= msg %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </div>
 </body>
 </html>
