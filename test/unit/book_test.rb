@@ -40,4 +40,19 @@ class BookTest < ActiveSupport::TestCase
     assert !@new_book.save
   end
   
+  test "popular books" do
+    # Add two reservations to ruby book 1 and one reservation to book 2
+    books(:ruby).reservations.create(email: 'library@eficode.fi').free
+    books(:steppenwolf).reservations.create(email: 'library@eficode.fi')
+    books(:ruby).reservations.create(email: 'library@eficode.fi')
+    
+    popular_books = Book.popular(2).all
+
+    assert_equal 2, popular_books.size
+    assert_equal books(:ruby).title, popular_books.first.title
+    assert_equal 2, popular_books.first.count
+    assert_equal books(:steppenwolf).title, popular_books.second.title
+    assert_equal 1, popular_books.second.count
+  end
+  
 end

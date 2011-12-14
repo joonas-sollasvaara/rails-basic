@@ -11,6 +11,15 @@ class Book < ActiveRecord::Base
     self.reservations.where(state: 'reserved').first
   end
   
+  # Most popular books based on number of reservations
+  def self.popular(limit = 20)
+    self.joins(:reservations).
+      group("reservations.book_id").
+      select("*, count(reservations.book_id) as count").
+      order("count desc").
+      limit(limit)
+  end
+  
   def self.search_by_isbn(value)
     self.where(:isbn => value)
   end
