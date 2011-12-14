@@ -11,4 +11,10 @@
   <dl><%= render @books %></dl>
 <% end %>
 
+<h2>Popular books</h2>
+
+<% if @popular_books.size > 0 %>
+	<dl><%= render @popular_books %></dl>
+<% end %>
+
 <%= link_to "New book", new_book_path, class: 'btn' %>

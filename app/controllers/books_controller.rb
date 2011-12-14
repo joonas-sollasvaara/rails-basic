@@ -3,7 +3,10 @@ class BooksController < ApplicationController
   def index
     respond_to do |format|
       format.atom { @books = Book.order('created_at DESC') }
-      format.html { @books = Book.latest }
+      format.html do 
+      	@books = Book.latest
+      	@popular_books = Book.popular.all
+      end
       format.xml  { render xml: Book.all }
       format.json { render json: Book.all }
     end
