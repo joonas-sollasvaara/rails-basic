@@ -25,3 +25,13 @@
 <% end %>
 
 <%= link_to "New book", new_book_path, class: 'btn' %>
+
+<% if @latest_books.size > 0 %>
+	<h2>Latest books</h2>
+	<dl>
+    <% @latest_books.each do |book| %>
+      <dt><%= link_to book.title, book_path(book) %></dt>
+      <dd>by <%= book.authors %></dd>
+    <% end %>
+  </dl>
+<% end %>
