@@ -95,21 +95,21 @@ class BooksControllerTest < ActionController::TestCase
   test "search by title" do
     get :search, query: 'Ruby'
     assert_response :success
-    assert_template :index
+    assert_template :search
     assert assigns(:books).include?(books(:ruby))
   end
   
   test "search by isbn" do
     get :search, query: '978-1-93435-608-1', by: 'isbn'
     assert_response :success
-    assert_template :index
+    assert_template :search
     assert assigns(:books).include?(books(:ruby))
   end
   
   test "search by authors" do
     get :search, query: 'Hermann', by: 'authors'
     assert_response :success
-    assert_template :index
+    assert_template :search
     assert assigns(:books).include?(books(:steppenwolf))
   end
 
