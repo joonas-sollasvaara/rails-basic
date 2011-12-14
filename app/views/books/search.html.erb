@@ -1,0 +1,14 @@
+<h1>
+  Found Books
+  <%= link_to image_tag("feed-icon.png"), search_books_path(:atom, :query => params[:query], :by => params[:by]) %>
+</h1>
+
+<%= render partial: 'search_form' %>
+
+<% if @books.size > 0 %>
+  <dl><%= render @books %></dl>
+<% else %>
+  <h2>Sorry, we haven't found any books!</h2>
+<% end %>
+
+

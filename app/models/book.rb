@@ -23,4 +23,7 @@ class Book < ActiveRecord::Base
     self.where("title LIKE ?", "%#{value}%").order("title asc, created_at desc")
   end
   
+  def self.latest(updated_at = Time.now.prev_week, limit = 20)
+  	self.where("updated_at > ?", updated_at).order("updated_at DESC, title").limit(limit)
+  end  
 end

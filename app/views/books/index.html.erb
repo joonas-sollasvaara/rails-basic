@@ -3,35 +3,12 @@
   <%= link_to image_tag("feed-icon.png"), books_path(:atom) %>
 </h1>
 
-<%= form_tag search_books_path, method: :get do %>
-  <%= search_field_tag :query, params[:query], placeholder: 'Search by title' %>
-  <%= submit_tag 'Search', class: 'btn primary' %>
-  <div>
-    <%= query_by_radio_tag :title %>
-    <%= query_by_radio_tag :isbn %>
-    <%= query_by_radio_tag :authors %>
-  </div>
-<% end %>
+<%= render partial: 'search_form' %>
+
+<h2>Latest books</h2>
 
 <% if @books.size > 0 %>
-  <dl>
-    <% @books.each do |book| %>
-      <dt><%= link_to book.title, book_path(book) %></dt>
-      <dd>by <%= book.authors %></dd>
-    <% end %>
-  </dl>
-<% else %>
-  <h2>Sorry, we haven't found any books!</h2>
+  <dl><%= render @books %></dl>
 <% end %>
 
 <%= link_to "New book", new_book_path, class: 'btn' %>
-
-<% if @latest_books.size > 0 %>
-	<h2>Latest books</h2>
-	<dl>
-    <% @latest_books.each do |book| %>
-      <dt><%= link_to book.title, book_path(book) %></dt>
-      <dd>by <%= book.authors %></dd>
-    <% end %>
-  </dl>
-<% end %>
